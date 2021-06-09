@@ -15,12 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-ecr-repo:latest
+      run: docker build . --file Dockerfile --tag datasecurity:latest
     - name: Login to ECR Registry
       uses: docker/login-action@v1
       with:
         registry: 006271716589.dkr.ecr.ap-south-1.amazonaws.com
         username: ${{ secrets.AWS_ACCESS_KEY_ID }}
         password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: Tag image ECR
+      run: docker tag datasecurity:latest 006271716589.dkr.ecr.ap-south-1.amazonaws.com/my-web-app
     - name: push image to ECR AWS
-      run: docker push my-ecr-repo:latest
+      run: docker push 006271716589.dkr.ecr.ap-south-1.amazonaws.com/my-web-app
