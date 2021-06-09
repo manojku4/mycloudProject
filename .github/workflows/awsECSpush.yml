@@ -23,6 +23,6 @@ jobs:
         username: ${{ secrets.AWS_ACCESS_KEY_ID }}
         password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Tag image ECR
-      run: docker tag datasecurity:latest 006271716589.dkr.ecr.ap-south-1.amazonaws.com/my-web-app
+      run: docker tag datasecurity:latest 006271716589.dkr.ecr.ap-south-1.amazonaws.com/my-ecr-repo
     - name: push image to ECR AWS
-      run: docker push 006271716589.dkr.ecr.ap-south-1.amazonaws.com/my-web-app
+      run: docker push 006271716589.dkr.ecr.ap-south-1.amazonaws.com/my-ecr-repo
